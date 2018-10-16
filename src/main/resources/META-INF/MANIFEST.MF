@@ -1,0 +1,2 @@
+
+Main-Class: vendor_sc.App_Vendor_SC
