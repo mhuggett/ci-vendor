@@ -398,4 +398,11 @@ public class Utils {
     bw.close();
   }
 
+
+  public static void print_char_encodings(Logger log,
+                                    String text) {
+    for (char c : text.toCharArray())
+      log.info(c + "   " + Integer.toHexString(c));
+  }
+
 }

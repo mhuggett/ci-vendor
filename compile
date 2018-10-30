@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo --- compiling ---
+mvn clean install
+
+echo --- copy to TEST ---
+cp target/ci-vendor-0.0.1-SNAPSHOT-jar-with-dependencies.jar TEST/ci-vendor-sc-col.jar
+
+echo --- compile done ---
+

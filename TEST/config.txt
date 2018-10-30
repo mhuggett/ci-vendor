@@ -1,11 +1,15 @@
 
-# HOST = esb1.marcura-fze.com
+HOST = esb1.marcura-fze.com
 # HOST = localhost:8550
-HOST = 127.0.0.1:8550
 
 SUFFIX = _TEST.xlsx
 
 COL_IN  = TEXT
 COL_OUT = SC_DEFAULT
+
+START = 1
+RANGE = 
+
+LOG_LEVEL = INFO
 
 # --

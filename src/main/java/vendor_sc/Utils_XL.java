@@ -27,7 +27,8 @@ public class Utils_XL {
   public static String get_cell_value(Cell cell) {
     String val = null;
 
-    if (Cell.CELL_TYPE_FORMULA == cell.getCellType())
+    if (Cell.CELL_TYPE_FORMULA == cell.getCellType()) {
+      log.trace("formula");
       switch (cell.getCachedFormulaResultType()) {
       case Cell.CELL_TYPE_NUMERIC:
         val = String.valueOf(cell.getNumericCellValue()).trim();
@@ -35,10 +36,19 @@ public class Utils_XL {
       case Cell.CELL_TYPE_STRING:
         val = cell.getRichStringCellValue().getString().trim();
         break;
+      case Cell.CELL_TYPE_ERROR:
+        val = String.valueOf(cell.getCellFormula()).trim();
+        break;
       }
 
-    else
+    } else if (Cell.CELL_TYPE_ERROR == cell.getCellType()) {
+      log.trace("error");
+      val = String.valueOf(cell.getErrorCellValue()).trim();
+
+    } else {
+      log.trace("other");
       val = dataFormatter.formatCellValue(cell).trim();
+    }
 
     return val.isEmpty() || val.equals("--") // --: deliberately not assigned
         ? null //
